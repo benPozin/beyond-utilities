@@ -1,103 +1,190 @@
-import Image from "next/image";
+import Link from 'next/link';
+import Reveal from '../components/Reveal';
+import Image from 'next/image';
+
+const CtaPrimary =
+  "rounded-lg px-5 py-3 bg-blue-600 text-white hover:bg-blue-700";
+const CtaSecondary =
+  "rounded-lg px-5 py-3 border hover:bg-black/5";
+
+const logos = [
+  { src: "/logos/uwaterloo.png", alt: "Waterloo" },
+  { src: "/logos/queens.png", alt: "Queen's" },
+  { src: "/logos/laurier.png", alt: "Laurier" },
+  { src: "/logos/western.png", alt: "Western" },
+  { src: "/logos/guelph.png", alt: "Guelph" },
+];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="space-y-20">
+      {/* ---------------- HERO (centered + fades) ---------------- */}
+      <section className="flex flex-col items-center text-center gap-6">
+        <Reveal>
+          <h1 className="text-4xl md:text-6xl font-bold max-w-4xl">
+            Helping high school students choose the right path after graduation
+          </h1>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Get guidance and clarity exploring post-secondary options, from the comfort of your home.
+            Join a learning experience that will <em>actually</em> prepare you for university.
+          </p>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/signup" className={CtaPrimary}>Join now</Link>
+            <Link href="/schedule" className={CtaSecondary}>View schedule</Link>
+          </div>
+        </Reveal>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {/* ---------------- REAL ADVICE + LOGOS ---------------- */}
+      <section className="space-y-6">
+        <Reveal>
+          <div className="space-y-2">
+            <h2 className="text-2xl md:text-3xl font-semibold">
+              Real advice from real university students.
+            </h2>
+            <p className="text-muted-foreground max-w-2xl">
+              Hear honest experiences from students across Ontario’s major universities. No scripts. No marketing. Just the truth.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {logos.map((logo) => (
+              <div
+                key={logo.src}
+                className="h-32 rounded-md border bg-[linear-gradient(135deg,rgba(0,0,0,0.04),rgba(0,0,0,0.02))] flex items-center justify-center p-2"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={160}
+                  height={80}
+                  className="object-contain max-h-26 w-auto"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/signup" className={CtaPrimary}>Join now</Link>
+            <Link href="/schedule" className={CtaSecondary}>See upcoming events</Link>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ---------------- VIDEO PLACEHOLDER ---------------- */}
+      <section className="space-y-4">
+        <Reveal>
+          <h2 className="text-2xl md:text-3xl font-semibold">Beyond Utilities: Learn More About the Program</h2>
+          <p className="text-muted-foreground max-w-2xl">
+            This will be a short video from Ryan explaining the program. 
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="aspect-video w-full rounded-xl border overflow-hidden bg-black/5 flex items-center justify-center">
+            <span className="text-sm text-muted-foreground">Video placeholder</span>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/signup" className={CtaPrimary}>Join now</Link>
+            <Link href="/schedule" className={CtaSecondary}>View schedule</Link>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ---------------- WHY BU MATTERS / TESTIMONIALS (flashier) ---------------- */}
+      <section className="space-y-8">
+        <Reveal>
+          <div className="mx-auto max-w-6xl px-2">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+              Why Beyond Utilities is Important
+            </h2>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              "Candid, student-led panels across majors & universities",
+              "Clarity on programs, workloads, campus life, and outcomes",
+              "Low‑pressure format with Q&A and honest discussion",
+              "Recordings for registrants so you can revisit anytime",
+            ].map((text, i) => (
+              <div
+                key={i}
+                className="
+                  group overflow-hidden rounded-2xl border bg-white/80 backdrop-blur
+                  shadow-sm transition-all
+                  hover:shadow-lg hover:-translate-y-0.5
+                "
+              >
+                {/* gradient accent bar */}
+                <div className="h-1 w-full bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500" />
+                <div className="p-6">
+                  <p className="text-base md:text-lg text-gray-800 leading-relaxed">
+                    {text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="mx-auto max-w-6xl space-y-4">
+            <div className="rounded-2xl border bg-white/80 backdrop-blur p-6 shadow-sm">
+              <p className="text-sm text-muted-foreground">
+                Testimonials from people: <em>TBA</em>
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/signup" className={CtaPrimary}>Join now</Link>
+              <Link href="/schedule" className={CtaSecondary}>See upcoming events</Link>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ---------------- BOTTOM INFO ---------------- */}
+      <section className="grid sm:grid-cols-2 gap-6">
+        <Reveal>
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold">Stay in the loop</h3>
+            <p className="text-muted-foreground">Check the latest schedule and register for sessions.</p>
+            <Link href="/schedule" className="underline text-blue-600">View schedule →</Link>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold">Questions?</h3>
+            <p className="text-muted-foreground">
+              Join our live Q&amp;A or email us at{" "}
+              <a className="underline text-blue-600" href="mailto:beyondutilitiescanada@gmail.com">
+                beyondutilitiescanada@gmail.com
+              </a>
+              .
+            </p>
+            <a
+              href="https://calendar.google.com/calendar/u/0/share?slt=1AQOvs_UF05ewFPkeBbuT_DOufIlw7kZ6dHT55I8VMedt6_h0XyT4vF4WiS4hiIdhdocAy0CXJuLhTA&pli=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-600"
+            >
+              Join the live Q&amp;A →
+            </a>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 }
