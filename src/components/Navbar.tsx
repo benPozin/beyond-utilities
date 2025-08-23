@@ -20,13 +20,13 @@ export default function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-6">
-          <Link href="/schedule" className="hover:underline">
+          <Link href="/schedule" className="font-bold hover:underline">
             Schedule
           </Link>
-          <Link href="/about" className="hover:underline">
+          <Link href="/about" className="font-bold hover:underline">
             About
           </Link>
-          <Link href="/faq" className="hover:underline">
+          <Link href="/faq" className="font-bold hover:underline">
             Q&amp;A
           </Link>
           <Link
