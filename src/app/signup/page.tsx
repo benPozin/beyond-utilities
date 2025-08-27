@@ -1,7 +1,7 @@
-const PRICE_ID = process.env.NEXT_PUBLIC_MS_PRICE_ID || 'prc_early-bird-bundle-qt6o0ozd';
+// src/app/signup/page.tsx
+import MsPriceButton from "@/components/MsPriceButton";
 
-// React/JSX-safe attributes for Memberstack checkout (colon in key)
-const checkoutAttrs: Record<string, string> = { ['data-ms-price:add']: PRICE_ID };
+const PRICE_ID = process.env.NEXT_PUBLIC_MS_PRICE_ID || "prc_early-bird-bundle-qt6o0ozd";
 
 export default function SignupPage() {
   return (
@@ -22,23 +22,21 @@ export default function SignupPage() {
             Create account
           </button>
           <p className="text-sm text-muted-foreground">
-            Already have one?{' '}
+            Already have one?{" "}
             <button type="button" data-ms-modal="login" className="underline">
               Sign in
             </button>
           </p>
         </div>
 
-        {/* === CHECKOUT (TEST/LIVE via env) === */}
         <div className="rounded-lg border p-4">
           <h2 className="text-lg font-medium mb-2">Early Bird Bundle</h2>
-          <a
-            href="#"
-            {...checkoutAttrs}  // <-- this is the key change
+          <MsPriceButton
+            priceId={PRICE_ID}
             className="inline-flex rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700"
           >
             Buy Now
-          </a>
+          </MsPriceButton>
           <p className="mt-2 text-xs text-muted-foreground">
             This opens Stripe Checkout via Memberstack.
           </p>
@@ -47,12 +45,19 @@ export default function SignupPage() {
 
       {/* Logged IN */}
       <div data-ms-content="members" className="space-y-4 rounded-lg border p-4">
-        <p>Signed in as <span data-ms-member="email"></span>.</p>
-        <a data-ms-action="customer-portal" className="inline-flex rounded-lg border px-4 py-2 hover:bg-black/5">
+        <p>
+          Signed in as <span data-ms-member="email"></span>.
+        </p>
+        <a
+          data-ms-action="customer-portal"
+          className="inline-flex rounded-lg border px-4 py-2 hover:bg-black/5"
+        >
           Manage billing
         </a>
         <div>
-          <button type="button" data-ms-action="logout" className="underline">Log out</button>
+          <button type="button" data-ms-action="logout" className="underline">
+            Log out
+          </button>
         </div>
       </div>
     </main>
