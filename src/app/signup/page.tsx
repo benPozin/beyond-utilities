@@ -1,5 +1,8 @@
 const PRICE_ID = process.env.NEXT_PUBLIC_MS_PRICE_ID || 'prc_early-bird-bundle-qt6o0ozd';
 
+// React/JSX-safe attributes for Memberstack checkout (colon in key)
+const checkoutAttrs: Record<string, string> = { ['data-ms-price:add']: PRICE_ID };
+
 export default function SignupPage() {
   return (
     <main className="mx-auto max-w-3xl space-y-8">
@@ -11,24 +14,34 @@ export default function SignupPage() {
       {/* Logged OUT */}
       <div data-ms-content="!members" className="space-y-6">
         <div className="space-y-3">
-          <button type="button" data-ms-modal="signup"
-            className="rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700">
+          <button
+            type="button"
+            data-ms-modal="signup"
+            className="rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700"
+          >
             Create account
           </button>
           <p className="text-sm text-muted-foreground">
-            Already have one? <button type="button" data-ms-modal="login" className="underline">Sign in</button>
+            Already have one?{' '}
+            <button type="button" data-ms-modal="login" className="underline">
+              Sign in
+            </button>
           </p>
         </div>
 
+        {/* === CHECKOUT (TEST/LIVE via env) === */}
         <div className="rounded-lg border p-4">
           <h2 className="text-lg font-medium mb-2">Early Bird Bundle</h2>
           <a
             href="#"
-            data-ms-price:add={PRICE_ID}
+            {...checkoutAttrs}  // <-- this is the key change
             className="inline-flex rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700"
           >
             Buy Now
           </a>
+          <p className="mt-2 text-xs text-muted-foreground">
+            This opens Stripe Checkout via Memberstack.
+          </p>
         </div>
       </div>
 
@@ -38,7 +51,9 @@ export default function SignupPage() {
         <a data-ms-action="customer-portal" className="inline-flex rounded-lg border px-4 py-2 hover:bg-black/5">
           Manage billing
         </a>
-        <div><button type="button" data-ms-action="logout" className="underline">Log out</button></div>
+        <div>
+          <button type="button" data-ms-action="logout" className="underline">Log out</button>
+        </div>
       </div>
     </main>
   );
