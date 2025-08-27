@@ -123,9 +123,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-semibold">
             Beyond Utilities: Learn More About the Program
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            This will be a short video from Ryan explaining the program.
-          </p>
+
         </Reveal>
 
         <Reveal delay={0.1}>
