@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar"; // adjust if needed
@@ -17,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script
           id="memberstack"
           src="https://api.memberstack.com/static/memberstack.js"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           data-memberstack-id="app_cmeoo2t0w006i0xwo8ttr7xy9" // your app id
           crossOrigin="anonymous"
         />
