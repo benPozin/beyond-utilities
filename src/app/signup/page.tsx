@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
-    Memberstack?: { onReady: () => Promise<any> };
+    // Memberstack's onReady doesn't need to return a value for our use case
+    Memberstack?: { onReady: () => Promise<void> };
   }
 }
 
@@ -21,17 +22,30 @@ export default function SignupPage() {
     priceLinkRef.current?.setAttribute("data-ms-price:add", PRICE_ID);
 
     // 2) Wait for Memberstack to be ready (works on localhost)
-    let t: any;
+    let t: number | undefined;
+
     const tryReady = () => {
       const ms = window.Memberstack;
       if (ms?.onReady) {
+        // no-floating-promises: we're handling completion via setMsReady
         ms.onReady().then(() => setMsReady(true));
         return true;
       }
       return false;
     };
-    if (!tryReady()) t = setInterval(() => tryReady() && clearInterval(t), 100);
-    return () => clearInterval(t);
+
+    if (!tryReady()) {
+      t = window.setInterval(() => {
+        if (tryReady() && t !== undefined) {
+          window.clearInterval(t);
+          t = undefined;
+        }
+      }, 100);
+    }
+
+    return () => {
+      if (typeof t === "number") window.clearInterval(t);
+    };
   }, []);
 
   return (
@@ -51,6 +65,7 @@ export default function SignupPage() {
             data-ms-tab="signup"
             aria-disabled={!msReady}
             className="inline-flex rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700 disabled:opacity-60"
+            role="button"
           >
             Create account
           </a>
@@ -61,6 +76,7 @@ export default function SignupPage() {
               data-ms-modal="auth"
               data-ms-tab="login"
               className="underline"
+              role="button"
             >
               Sign in
             </a>
@@ -74,6 +90,7 @@ export default function SignupPage() {
             href="#"
             ref={priceLinkRef}
             className="inline-flex rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700"
+            role="button"
           >
             Buy Now
           </a>
@@ -92,6 +109,7 @@ export default function SignupPage() {
           href="#"
           data-ms-action="customer-portal"
           className="inline-flex rounded-lg border px-4 py-2 hover:bg-black/5"
+          role="button"
         >
           Manage billing
         </a>
