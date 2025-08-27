@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Navbar from '@/components/Navbar';
+import MemberstackLoader from '@/components/MemberstackLoader';
 
 export const metadata: Metadata = {
   title: 'Beyond Utilities',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <MemberstackLoader />
         <Navbar />
         <main className="mx-auto max-w-6xl px-4 py-12">{children}</main>
       </body>
