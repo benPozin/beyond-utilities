@@ -14,51 +14,21 @@ export default function Navbar() {
               alt="Beyond Utilities Logo"
               fill
               priority
-              sizes="192px"                 // avoid Next.js 'fill' warning
               className="object-contain hover:opacity-80"
             />
           </div>
         </Link>
 
         <nav className="flex items-center gap-6">
-          <Link href="/schedule" className="font-bold hover:underline">Schedule</Link>
-          <Link href="/about" className="font-bold hover:underline">About</Link>
-          <Link href="/faq" className="font-bold hover:underline">Q&amp;A</Link>
-
-          {/* ---- Auth (Memberstack) ---- */}
-          {/* Logged OUT */}
-          <div data-ms-content="!members" className="flex items-center gap-3">
-            <button
-              type="button"
-              data-ms-modal="auth"
-              data-ms-tab="login"
-              className="font-bold hover:underline"
-            >
-              Sign in
-            </button>
-            <button
-              type="button"
-              data-ms-modal="auth"
-              data-ms-tab="signup"
-              className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-            >
-              Create account
-            </button>
-          </div>
-
-          {/* Logged IN */}
-          <div data-ms-content="members" className="flex items-center gap-3">
-            <Link href="/account" className="font-bold hover:underline">My account</Link>
-            <button
-              type="button"
-              data-ms-action="logout"
-              className="rounded-lg border px-3 py-2 hover:bg-black/5"
-            >
-              Log out
-            </button>
-          </div>
-
-          {/* Extra CTA to your signup page */}
+          <Link href="/schedule" className="font-bold hover:underline">
+            Schedule
+          </Link>
+          <Link href="/about" className="font-bold hover:underline">
+            About
+          </Link>
+          <Link href="/faq" className="font-bold hover:underline">
+            Q&amp;A
+          </Link>
           <Link
             href="/signup"
             className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
