@@ -15,6 +15,12 @@ const logos = [
   { src: "/logos/western.png", alt: "Western" },
   { src: "/logos/uoft.png", alt: "University of Toronto" },
   { src: "/logos/guelph.png", alt: "Guelph" },
+  { src: "/logos/brock.png", alt: "Brock" },
+  { src: "/logos/mcgill.png", alt: "McGill" },
+  { src: "/logos/mcmaster.png", alt: "McMaster" },
+  { src: "/logos/tmu.png", alt: "Tornto Metropolitan University" },
+  { src: "/logos/trent.png", alt: "Trent" },
+  { src: "/logos/uottawa.png", alt: "Ottawa" },
   // add more as needed
 ];
 
@@ -145,7 +151,7 @@ export default function Home() {
                 <div className="relative h-56 md:h-full rounded-2xl overflow-hidden border bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
                   {/* If you add a visual later, drop it here */}
                   <Image
-                    src="/illustrations/study-collage.png"
+                    src="/whatis.jpg"
                     alt=""
                     fill
                     className="object-cover object-center opacity-90"

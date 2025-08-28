@@ -8,7 +8,7 @@ type Logo = { src: string; alt: string };
 
 export default function UniScroller({
   logos,
-  speedSec = 56,
+  speedSec = 25,
   pauseOnHover = true,
 }: {
   logos: Logo[];
